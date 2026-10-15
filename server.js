@@ -1,0 +1,23 @@
+const express=require('express');
+const helmet=require('helmet');
+const rateLimit=require('express-rate-limit');
+const fs=require('fs');const path=require('path');const crypto=require('crypto');
+const app=express(),PORT=Number(process.env.PORT||3000),ROOT=__dirname;
+const DATA=path.join(ROOT,'data'),LEADS=path.join(DATA,'leads.json');
+const ADMIN_USER=process.env.ADMIN_USERNAME||'admin',ADMIN_PASS=process.env.ADMIN_PASSWORD,ADMIN_TOKEN=process.env.ADMIN_TOKEN;
+fs.mkdirSync(DATA,{recursive:true});if(!fs.existsSync(LEADS))fs.writeFileSync(LEADS,'[]',{mode:0o600});
+app.disable('x-powered-by');app.use(helmet({contentSecurityPolicy:{directives:{defaultSrc:["'self'"],scriptSrc:["'self'"],styleSrc:["'self'","'unsafe-inline'",'https://fonts.googleapis.com'],fontSrc:["'self'",'https://fonts.gstatic.com','data:'],imgSrc:["'self'",'data:','https:'],connectSrc:["'self'"],objectSrc:["'none'"],upgradeInsecureRequests:null}}}));
+app.use(express.json({limit:'20kb'}));app.use(express.urlencoded({extended:false,limit:'20kb'}));
+const contactLimiter=rateLimit({windowMs:15*60*1000,limit:60,standardHeaders:true,legacyHeaders:false});
+const adminLoginLimiter=rateLimit({windowMs:15*60*1000,limit:200,standardHeaders:true,legacyHeaders:false});
+const clean=(v,n=500)=>String(v??'').trim().replace(/[<>]/g,'').slice(0,n);
+const equal=(a,b)=>{const x=Buffer.from(String(a)),y=Buffer.from(String(b));return x.length===y.length&&crypto.timingSafeEqual(x,y)};
+const read=()=>{try{let d=JSON.parse(fs.readFileSync(LEADS,'utf8'));return Array.isArray(d)?d:[]}catch{return[]}};
+const write=d=>fs.writeFileSync(LEADS,JSON.stringify(d,null,2),{mode:0o600});
+function auth(req,res,next){let t=(req.get('authorization')||'').replace(/^Bearer /,'');if(!ADMIN_TOKEN)return res.status(503).json({error:'Admin is not configured. Set ADMIN_TOKEN in your environment.'});if(!t||!equal(t,ADMIN_TOKEN))return res.status(401).json({error:'Unauthorized'});next()}
+app.use(express.static(path.join(ROOT,'public'),{extensions:['html']}));app.use(express.static(path.join(ROOT,'admin')));app.use('/admin',express.static(path.join(ROOT,'admin'),{extensions:['html']}));
+app.post('/api/contact',contactLimiter,(req,res)=>{if(req.body.website)return res.json({ok:true,message:'Thanks! Your message has been received.'});let name=clean(req.body.name,100),email=clean(req.body.email,160),phone=clean(req.body.phone,40),service=clean(req.body.service,100),message=clean(req.body.message,2000);if(name.length<2||!/^\S+@\S+\.\S+$/.test(email)||message.length<10)return res.status(400).json({error:'Please enter your name, a valid email, and a message of at least 10 characters.'});let leads=read();leads.unshift({id:crypto.randomUUID(),name,email,phone,service,message,createdAt:new Date().toISOString(),status:'New'});write(leads.slice(0,5000));res.json({ok:true,message:'Thanks! Your enquiry has been sent successfully.'})});
+app.post('/api/admin/login',adminLoginLimiter,(req,res)=>{if(!ADMIN_PASS||!ADMIN_TOKEN)return res.status(503).json({error:'Admin is not configured. Set ADMIN_PASSWORD and ADMIN_TOKEN in hosting environment.'});if(!equal(clean(req.body.username,100),ADMIN_USER)||!equal(req.body.password,ADMIN_PASS))return res.status(401).json({error:'Invalid username or password.'});res.json({ok:true,token:ADMIN_TOKEN})});
+app.get('/api/admin/leads',auth,(req,res)=>{res.set('Cache-Control','no-store');res.json(read())});
+app.patch('/api/admin/leads/:id',auth,(req,res)=>{let status=clean(req.body.status,30);if(!['New','Contacted','Qualified','Closed'].includes(status))return res.status(400).json({error:'Invalid status'});let leads=read(),lead=leads.find(x=>x.id===req.params.id);if(!lead)return res.status(404).json({error:'Lead not found'});lead.status=status;write(leads);res.json({ok:true})});
+app.get('/api/health',(_,res)=>res.json({ok:true}));app.listen(PORT,()=>console.log(`Portfolio running at http://localhost:${PORT}`));
