@@ -1,1 +1,121 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin Panel | Yash Portfolio</title><link rel="stylesheet" href="/admin.css"><script src="/admin.js" defer></script></head><body><main class="shell"><header><a href="/" class="brand"><span class="mark">YK</span>Portfolio Admin</a><a href="/" class="back">← View website</a></header><section id="login" class="login"><div class="mark large">⌘</div><p class="eyebrow">PRIVATE WORKSPACE</p><h1>Welcome back.</h1><p class="muted">Sign in to review website enquiries.</p><form id="loginForm"><label>Username<input name="username" autocomplete="username" required value="admin"></label><label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Admin password"></label><button id="loginBtn" class="primary">Sign in ↗</button><p id="loginNotice" class="notice" role="status"></p></form><small>Admin login must be configured on the server before use.</small></section><section id="dashboard" class="hidden"><div class="dashhead"><div><p class="eyebrow">OVERVIEW</p><h1>Website enquiries</h1><p class="muted">Messages submitted through your portfolio contact form.</p></div><button id="logout" class="secondary">Log out</button></div><div class="stats"><article><span>Total enquiries</span><b id="total">0</b></article><article><span>New</span><b id="new">0</b></article><article><span>Contacted / Qualified</span><b id="active">0</b></article></div><div class="listhead"><h2>All messages</h2><button id="refresh" class="secondary">↻ Refresh</button></div><div id="leads" class="leads"><div class="empty">No enquiries yet.</div></div><small>Keep this admin session private and handle customer details responsibly.</small></section></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Admin Panel | Yash Portfolio</title>
+  <link rel="stylesheet" href="/admin.css">
+  <link rel="stylesheet" href="/portfolio.css">
+  <script src="/admin.js" defer></script>
+  <script src="/portfolio.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <a href="/" class="brand"><span class="mark">YK</span>Portfolio Admin</a>
+      <a href="/" class="back">← View website</a>
+    </header>
+    <section id="login" class="login">
+      <div class="mark large">⌘</div>
+      <p class="eyebrow">PRIVATE WORKSPACE</p>
+      <h1>Welcome back.</h1>
+      <p class="muted">Sign in to review website enquiries.</p>
+      <form id="loginForm">
+        <label>Username<input name="username" autocomplete="username" required value="admin"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Admin password"></label>
+        <button id="loginBtn" class="primary">Sign in ↗</button>
+        <p id="loginNotice" class="notice" role="status"></p>
+      </form>
+      <button id="forgotPassword" class="text-button" type="button">Forgot password?</button>
+      <small>Admin login must be configured on the server before use.</small>
+    </section>
+    <section id="forgotPanel" class="login hidden">
+      <p class="eyebrow">ACCOUNT RECOVERY</p>
+      <h1>Reset your password.</h1>
+      <p class="muted">We’ll email a one-time reset link to the configured recovery address.</p>
+      <form id="forgotForm">
+        <label>Username<input name="username" autocomplete="username" required value="admin"></label>
+        <button id="forgotBtn" class="primary">Send reset link</button>
+        <p id="forgotNotice" class="notice" role="status"></p>
+      </form>
+      <button id="backToLogin" class="text-button" type="button">Back to sign in</button>
+    </section>
+    <section id="resetPanel" class="login hidden">
+      <p class="eyebrow">ACCOUNT RECOVERY</p>
+      <h1>Choose a new password.</h1>
+      <p class="muted">Use at least 12 characters. The reset link is single-use and expires after 15 minutes.</p>
+      <form id="resetForm">
+        <label>New password<input name="password" type="password" autocomplete="new-password" minlength="12" required></label>
+        <button id="resetBtn" class="primary">Reset password</button>
+        <p id="resetNotice" class="notice" role="status"></p>
+      </form>
+      <button id="resetBackToLogin" class="text-button" type="button">Back to sign in</button>
+    </section>
+    <section id="dashboard" class="hidden">
+      <div class="dashhead">
+        <div><p class="eyebrow">OVERVIEW</p><h1>Website enquiries</h1><p class="muted">Messages submitted through your portfolio contact form.</p></div>
+        <button id="logout" class="secondary">Log out</button>
+      </div>
+      <nav class="workspace-tabs" aria-label="Admin sections">
+        <button type="button" class="workspace-tab" data-workspace="leadsWorkspace">Enquiries</button>
+        <button type="button" class="workspace-tab" data-workspace="portfolioWorkspace">Portfolio content</button>
+      </nav>
+      <section id="leadsWorkspace">
+      <div class="stats">
+        <article><span>Total enquiries</span><b id="total">0</b></article>
+        <article><span>New</span><b id="new">0</b></article>
+        <article><span>Contacted / Qualified</span><b id="active">0</b></article>
+      </div>
+      <div class="listhead"><h2>All messages</h2><button id="refresh" class="secondary">↻ Refresh</button></div>
+      <div id="leads" class="leads"><div class="empty">No enquiries yet.</div></div>
+      </section>
+      <section id="portfolioWorkspace" class="hidden">
+        <div class="portfolio-heading">
+          <div><p class="eyebrow">PORTFOLIO STUDIO</p><h2>Manage your portfolio</h2><p class="muted">Changes are saved to the website data. Draft case studies stay private.</p></div>
+          <button id="portfolioRefresh" class="secondary" type="button">↻ Refresh</button>
+        </div>
+        <div class="portfolio-toolbar">
+          <label>Search<input id="portfolioSearch" type="search" placeholder="Search names and descriptions"></label>
+          <label id="projectStatusFilterWrap" class="hidden">Project status
+            <select id="projectStatusFilter"><option value="all">All projects</option><option value="published">Published</option><option value="draft">Drafts</option></select>
+          </label>
+          <label id="projectCategoryFilterWrap" class="hidden">Category
+            <select id="projectCategoryFilter"><option value="all">All categories</option></select>
+          </label>
+          <label>Sort by
+            <select id="portfolioSort"><option value="order">Custom order</option><option value="name">Name</option><option value="recent">Recently updated</option></select>
+          </label>
+        </div>
+        <div class="portfolio-layout">
+          <aside class="portfolio-list-panel">
+            <div class="portfolio-type-tabs" role="tablist" aria-label="Portfolio content type">
+              <button type="button" data-portfolio-type="categories">Categories</button>
+              <button type="button" data-portfolio-type="subcategories">Subcategories</button>
+              <button type="button" data-portfolio-type="projects">Projects</button>
+            </div>
+            <div class="portfolio-list-heading"><h3 id="portfolioListTitle">Categories</h3><button id="portfolioAdd" class="primary compact" type="button">+ Add new</button></div>
+            <div id="portfolioList" class="portfolio-list" aria-live="polite"></div>
+          </aside>
+          <section class="portfolio-editor-panel">
+            <div id="portfolioEditorEmpty" class="portfolio-editor-empty">
+              <span aria-hidden="true">✦</span><h3>Choose an item to edit</h3><p>Select a category, subcategory, or project, or add a new one.</p>
+            </div>
+            <form id="portfolioForm" class="portfolio-form hidden">
+              <div class="portfolio-form-heading"><div><p id="portfolioTypeLabel" class="eyebrow">CATEGORY</p><h3 id="portfolioFormTitle">New category</h3></div><span id="portfolioSaveStatus" role="status"></span></div>
+              <div id="portfolioFields" class="portfolio-fields"></div>
+              <div id="portfolioFormActions" class="portfolio-form-actions"></div>
+            </form>
+          </section>
+        </div>
+        <small>Keep this admin session private. Only published portfolio content is visible to visitors.</small>
+      </section>
+      <small>Keep this admin session private and handle customer details responsibly.</small>
+    </section>
+  </main>
+  <dialog id="projectPreviewDialog" class="project-preview-dialog" aria-labelledby="projectPreviewTitle">
+    <div class="preview-dialog-head"><div><p class="eyebrow">VISITOR PREVIEW</p><h2 id="projectPreviewTitle">Case study preview</h2></div><button id="closeProjectPreview" class="secondary" type="button">Close</button></div>
+    <div id="projectPreviewBody"></div>
+  </dialog>
+</body>
+</html>

@@ -1,1 +1,1 @@
-{"name":"yash-kakadiya-portfolio","version":"1.0.0","private":true,"main":"server.js","scripts":{"start":"node server.js"},"engines":{"node":">=18"},"dependencies":{"express":"^4.21.2","express-rate-limit":"^7.5.0","helmet":"^8.0.0"}}
+{"name":"yash-kakadiya-portfolio","version":"1.0.0","private":true,"main":"server.js","scripts":{"start":"node server.js","test":"node --test --test-concurrency=1"},"engines":{"node":">=20"},"dependencies":{"dotenv":"^18.0.8","express":"^4.21.2","express-rate-limit":"^7.5.0","helmet":"^8.0.0","multer":"^2.4.0","nodemailer":"^10.1.2"}}

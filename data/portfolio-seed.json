@@ -1,0 +1,248 @@
+{
+  "version": 1,
+  "categories": [
+    {
+      "id": "import-export",
+      "slug": "import-export",
+      "name": "Import & Export",
+      "description": "Business enquiries and B2B-focused marketing projects.",
+      "sector": "B2B",
+      "icon": "↗",
+      "number": "01",
+      "color": "#1769e0",
+      "image": "",
+      "visible": true,
+      "order": 0
+    },
+    {
+      "id": "solar",
+      "slug": "solar",
+      "name": "Solar",
+      "description": "Lead generation and service-focused campaign exposure.",
+      "sector": "ENERGY",
+      "icon": "☼",
+      "number": "02",
+      "color": "#bd8b1e",
+      "image": "",
+      "visible": true,
+      "order": 1
+    },
+    {
+      "id": "jewellery-sales",
+      "slug": "jewellery-sales",
+      "name": "Jewellery & Sales",
+      "description": "Product-led businesses and sales-oriented campaigns.",
+      "sector": "RETAIL",
+      "icon": "◇",
+      "number": "03",
+      "color": "#7858ba",
+      "image": "",
+      "visible": true,
+      "order": 2
+    },
+    {
+      "id": "beauty-wellness",
+      "slug": "beauty-wellness",
+      "name": "Beauty & Wellness",
+      "description": "Local service businesses and customer enquiry campaigns.",
+      "sector": "LIFESTYLE",
+      "icon": "✳",
+      "number": "04",
+      "color": "#d47b9b",
+      "image": "",
+      "visible": true,
+      "order": 3
+    },
+    {
+      "id": "consultancy",
+      "slug": "consultancy",
+      "name": "Consultancy",
+      "description": "Service-based projects that depend on relevant leads.",
+      "sector": "SERVICES",
+      "icon": "⌘",
+      "number": "05",
+      "color": "#458b65",
+      "image": "",
+      "visible": true,
+      "order": 4
+    },
+    {
+      "id": "e-commerce-other",
+      "slug": "e-commerce-other",
+      "name": "E-commerce & Other",
+      "description": "Exposure to additional business and sales categories.",
+      "sector": "DIGITAL",
+      "icon": "▦",
+      "number": "06",
+      "color": "#d98244",
+      "image": "",
+      "visible": true,
+      "order": 5
+    }
+  ],
+  "subcategories": [
+    {
+      "id": "beauty",
+      "slug": "beauty",
+      "categoryId": "beauty-wellness",
+      "name": "Beauty",
+      "description": "Beauty, skincare, salon, and personal-care marketing projects.",
+      "icon": "✳",
+      "visible": true,
+      "order": 0
+    },
+    {
+      "id": "health-wellness",
+      "slug": "health-wellness",
+      "categoryId": "beauty-wellness",
+      "name": "Health & Wellness",
+      "description": "Health-related lead generation and wellness marketing projects.",
+      "icon": "✦",
+      "visible": true,
+      "order": 1
+    }
+  ],
+  "projects": [
+    {
+      "id": "health-wellness-case-study",
+      "slug": "health-wellness-case-study",
+      "title": "Health & Wellness — Turning Meta Ads into Measurable Enquiries.",
+      "categoryId": "beauty-wellness",
+      "subcategoryId": "health-wellness",
+      "businessType": "B2C",
+      "description": "A six-month-plus lead-generation campaign using Meta Lead Forms to connect health and wellness services with people across Gujarat and Maharashtra.",
+      "location": "India · Gujarat & Maharashtra",
+      "campaignDuration": "6+ Months",
+      "channels": [
+        "Meta Ads",
+        "Meta Lead Forms"
+      ],
+      "objectives": "Lead Generation / Customer Enquiries",
+      "audience": "Adults exploring practical support for healthier day-to-day outcomes.\nAudience interests:\n- Weight loss and healthy weight management\n- Diabetes management and better blood sugar control\n- Lifestyle improvement and personalized health guidance\n- Diet consultation",
+      "strategy": "Meta advertising directed prospective customers to Meta Lead Forms for health and wellness enquiries. No additional targeting settings or campaign tactics are assumed beyond the supplied brief.",
+      "resultsSummary": "Across a campaign duration of 6+ months, Meta Lead Forms generated 6,141+ leads at an average cost per lead of ₹14.32, with ₹87,968+ in ad spend managed. The supplied campaign data also reports 13.32 Lakh+ reach, 47.28 Lakh+ impressions, 55,217+ link clicks and a ₹1.59 average CPC. Downstream qualified leads, appointments and conversions / sales are identified as estimates.",
+      "resultsKind": "mixed",
+      "status": "published",
+      "featured": true,
+      "thumbnail": "/images/health-wellness-meta-ads.png",
+      "images": [
+        {
+          "id": "health-wellness-meta-ads-screenshot",
+          "url": "/images/health-wellness-meta-ads.png",
+          "alt": "Blurred Meta Ads Manager screenshot. Campaign names are obscured; its displayed metrics are not used for the case study figures.",
+          "kind": "screenshot",
+          "order": 0
+        }
+      ],
+      "metrics": [
+        {
+          "id": "ad-spend-managed",
+          "label": "Ad spend managed",
+          "value": "₹87,968+",
+          "description": "Spend",
+          "estimated": false,
+          "order": 0
+        },
+        {
+          "id": "total-leads",
+          "label": "Total leads generated",
+          "value": "6,141+",
+          "description": "Meta Lead Form enquiries",
+          "estimated": false,
+          "order": 1
+        },
+        {
+          "id": "average-cost-per-lead",
+          "label": "Average cost per lead",
+          "value": "₹14.32",
+          "description": "Per lead generated",
+          "estimated": false,
+          "order": 2
+        },
+        {
+          "id": "estimated-qualified-leads",
+          "label": "Estimated qualified leads",
+          "value": "2,211+",
+          "description": "Estimate",
+          "estimated": true,
+          "order": 3
+        },
+        {
+          "id": "estimated-cost-per-qualified-lead",
+          "label": "Estimated cost per qualified lead",
+          "value": "₹39.79",
+          "description": "Estimate · per qualified lead",
+          "estimated": true,
+          "order": 4
+        },
+        {
+          "id": "estimated-appointments",
+          "label": "Estimated appointments / meetings",
+          "value": "1,017+",
+          "description": "Estimate",
+          "estimated": true,
+          "order": 5
+        },
+        {
+          "id": "estimated-cost-per-appointment",
+          "label": "Estimated cost per appointment",
+          "value": "₹86.50",
+          "description": "Estimate · per appointment",
+          "estimated": true,
+          "order": 6
+        },
+        {
+          "id": "estimated-conversions",
+          "label": "Estimated conversions / sales",
+          "value": "224+",
+          "description": "Estimate",
+          "estimated": true,
+          "order": 7
+        },
+        {
+          "id": "estimated-cost-per-conversion",
+          "label": "Estimated cost per conversion",
+          "value": "₹393",
+          "description": "Estimate · per conversion",
+          "estimated": true,
+          "order": 8
+        },
+        {
+          "id": "total-reach",
+          "label": "Total reach",
+          "value": "13.32 Lakh+",
+          "description": "People reached",
+          "estimated": false,
+          "order": 9
+        },
+        {
+          "id": "total-impressions",
+          "label": "Total impressions",
+          "value": "47.28 Lakh+",
+          "description": "Impressions",
+          "estimated": false,
+          "order": 10
+        },
+        {
+          "id": "total-link-clicks",
+          "label": "Total link clicks",
+          "value": "55,217+",
+          "description": "Link clicks",
+          "estimated": false,
+          "order": 11
+        },
+        {
+          "id": "average-cpc",
+          "label": "Average CPC",
+          "value": "₹1.59",
+          "description": "Per link click",
+          "estimated": false,
+          "order": 12
+        }
+      ],
+      "createdAt": "2026-10-17T00:00:00.000Z",
+      "updatedAt": "2026-10-17T00:00:00.000Z",
+      "order": 0
+    }
+  ]
+}

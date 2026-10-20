@@ -1,0 +1,344 @@
+.industries article[role="button"] {
+  cursor: pointer;
+}
+
+.industries article[role="button"]:focus-visible {
+  outline: 3px solid #80adf6;
+  outline-offset: 3px;
+}
+
+.industry-dialog {
+  width: min(690px, calc(100% - 32px));
+  max-width: none;
+  max-height: min(88vh, 760px);
+  padding: 0;
+  overflow: auto;
+  border: 1px solid #e0e7f0;
+  border-radius: 19px;
+  background: #fff;
+  color: #111f31;
+  box-shadow: 0 28px 90px #0b192d40;
+}
+
+.industry-dialog::backdrop {
+  background: #101d2dcc;
+  backdrop-filter: blur(5px);
+}
+
+.industry-dialog-shell {
+  position: relative;
+  padding: clamp(25px, 5vw, 40px);
+}
+
+.industry-dialog-close {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #e2e9f2;
+  border-radius: 10px;
+  background: #fff;
+  color: #536278;
+  font: 400 24px/1 "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+
+.industry-dialog-close:hover {
+  border-color: #bcd4fb;
+  color: #1769e0;
+}
+
+.industry-dialog-content {
+  animation: industry-dialog-enter .2s ease both;
+}
+
+.industry-dialog-eyebrow {
+  margin: 0 45px 9px 0;
+  color: #1769e0;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.industry-dialog-content > h2 {
+  margin: 0;
+  color: #111f31;
+  font: 800 clamp(27px, 5vw, 36px)/1.2 Manrope, sans-serif;
+  letter-spacing: -1.2px;
+}
+
+.industry-dialog-intro {
+  max-width: 510px;
+  margin: 10px 0 23px;
+  color: #657388;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.industry-subcategories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.industry-subcategory {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #e3e9f1;
+  border-radius: 14px;
+  background: #fff;
+  color: #111f31;
+  text-align: left;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.industry-subcategory-link:hover,
+.industry-subcategory:focus-within {
+  transform: translateY(-2px);
+  border-color: #bcd4fb;
+  box-shadow: 0 14px 30px #172b4510;
+}
+
+.industry-subcategory-icon,
+.industry-coming-icon {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #eef5ff;
+  color: #1769e0;
+  font-size: 20px;
+}
+
+.industry-subcategory-beauty {
+  background: #fff0f5;
+  color: #e58eaa;
+}
+
+.industry-subcategory h3 {
+  margin: 17px 0 6px;
+  color: #111f31;
+  font: 800 16px Manrope, sans-serif;
+}
+
+.industry-subcategory p {
+  margin: 0 0 17px;
+  color: #657388;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.industry-option-button,
+.industry-option-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #1769e0;
+  font: 700 10px "DM Sans", sans-serif;
+  cursor: pointer;
+}
+
+.industry-option-link {
+  font-size: 10px;
+}
+
+.industry-dialog-back {
+  display: inline-flex;
+  margin-top: 19px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: #536278;
+  font: 700 10px "DM Sans", sans-serif;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+
+.industry-dialog-back:hover {
+  color: #1769e0;
+}
+
+.industry-coming-soon {
+  padding: 25px;
+  border: 1px solid #e3e9f1;
+  border-radius: 13px;
+  background: #f8faff;
+  text-align: center;
+}
+
+.industry-coming-icon {
+  margin: 0 auto 12px;
+}
+
+.industry-coming-soon h3 {
+  margin: 0 0 6px;
+  color: #111f31;
+  font: 800 16px Manrope, sans-serif;
+}
+
+.industry-coming-soon p {
+  margin: 0;
+  color: #657388;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.industries article[role="button"] {
+  border-color: #e3e9f1;
+}
+
+.industry-category-image {
+  width: 100%;
+  max-height: 150px;
+  margin-top: 12px;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.industry-project-heading {
+  margin: 19px 0 10px;
+  color: #111f31;
+  font: 800 15px Manrope, sans-serif;
+}
+
+.industry-project-list {
+  display: grid;
+  gap: 9px;
+}
+
+.industry-project-card {
+  display: grid;
+  grid-template-columns: minmax(70px, 110px) minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #e3e9f1;
+  border-radius: 11px;
+  color: #111f31;
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.industry-project-card:hover,
+.industry-project-card:focus-visible {
+  transform: translateY(-1px);
+  border-color: #bcd4fb;
+}
+
+.industry-project-image {
+  width: 100%;
+  height: 68px;
+  border-radius: 7px;
+  background: #f0f3f8;
+  object-fit: cover;
+}
+
+.industry-project-copy,
+.industry-project-copy > * {
+  display: block;
+}
+
+.industry-project-copy b {
+  font: 800 12px/1.5 Manrope, sans-serif;
+}
+
+.industry-project-copy small {
+  margin-top: 3px;
+  color: #657388;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.industry-project-action {
+  margin-top: 7px;
+  color: #1769e0;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.industry-no-projects {
+  margin: 0;
+  padding: 18px;
+  border: 1px dashed #d5deea;
+  border-radius: 10px;
+  color: #8290a2;
+  font-size: 10px;
+  text-align: center;
+}
+
+.industry-subcategory {
+  width: 100%;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.industry-option-button {
+  margin-top: auto;
+}
+
+@keyframes industry-dialog-enter {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 540px) {
+  .industry-dialog {
+    width: calc(100% - 22px);
+    max-height: 90vh;
+    border-radius: 15px;
+  }
+
+  .industry-dialog-shell {
+    padding: 27px 19px 20px;
+  }
+
+  .industry-dialog-close {
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .industry-dialog-intro {
+    margin-bottom: 17px;
+    font-size: 11px;
+  }
+
+  .industry-subcategories {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .industry-subcategory {
+    min-height: 0;
+    padding: 15px;
+  }
+
+  .industry-subcategory h3 {
+    margin-top: 12px;
+  }
+
+  .industry-subcategory p {
+    margin-bottom: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .industry-dialog *,
+  .industry-dialog *::before,
+  .industry-dialog *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}

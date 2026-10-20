@@ -5,6 +5,10 @@ node_modules/
 !.env.example
 
 data/leads.json
+data/admin-auth.json
+data/portfolio.json
+data/portfolio-backup-*/
+data/portfolio-uploads/
 
 *.log
 *.pem
